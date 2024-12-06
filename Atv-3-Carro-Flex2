@@ -1,0 +1,68 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    // Leitura dos dados
+    Console.WriteLine("Informe os dados para calcular o custo da viagem:");
+
+    Console.Write("Valor do litro de etanol: ");
+    double valorEtanol = double.Parse(Console.ReadLine());
+
+    Console.Write("Valor do litro de gasolina: ");
+    double valorGasolina = double.Parse(Console.ReadLine());
+
+    Console.Write("Quilometragem por litro com etanol: ");
+    double kmPorLitroEtanol = double.Parse(Console.ReadLine());
+
+    Console.Write("Quilometragem por litro com gasolina: ");
+    double kmPorLitroGasolina = double.Parse(Console.ReadLine());
+
+    Console.Write("Distância entre as cidades (em km): ");
+    double distancia = double.Parse(Console.ReadLine());
+
+    Console.Write("Valor do pedágio a cada 50 km: ");
+    double valorPedagio = double.Parse(Console.ReadLine());
+
+    Console.Write("Quantidade de pessoas no veículo (até 4): ");
+    int numPessoas = int.Parse(Console.ReadLine());
+
+    // Cálculo do custo total da viagem com etanol
+    double custoTotalEtanol = CalcularCustoTotal(valorEtanol, kmPorLitroEtanol, distancia, valorPedagio);
+
+    // Cálculo do custo total da viagem com gasolina
+    double custoTotalGasolina = CalcularCustoTotal(valorGasolina, kmPorLitroGasolina, distancia, valorPedagio);
+
+    // Determinar o combustível mais vantajoso
+    string combustivelMaisVantajoso = custoTotalEtanol < custoTotalGasolina ? "Etanol" : "Gasolina";
+
+    // Cálculo do valor que cada pessoa deve contribuir
+    double valorPorPessoa = (custoTotalEtanol + custoTotalGasolina) / numPessoas;
+
+    // Saída dos resultados
+    Console.WriteLine($"\nCusto total da viagem com Etanol: R${custoTotalEtanol:F2}");
+    Console.WriteLine($"Custo total da viagem com Gasolina: R${custoTotalGasolina:F2}");
+    Console.WriteLine($"Combustível mais vantajoso: {combustivelMaisVantajoso}");
+    Console.WriteLine($"Cada pessoa deve contribuir com: R${valorPorPessoa:F2}");
+
+    Console.ReadLine(); // Aguarda o usuário pressionar Enter para encerrar
+  }
+
+  static double CalcularCustoTotal(double valorCombustivel, double kmPorLitro, double distancia, double valorPedagio)
+  {
+    // Cálculo da quantidade de litros necessários
+    double litrosNecessarios = distancia / kmPorLitro;
+
+    // Cálculo do custo do combustível
+    double custoCombustivel = litrosNecessarios * valorCombustivel;
+
+    // Cálculo do número de pedágios
+    int numPedagios = (int)(distancia / 50);
+
+    // Cálculo do custo total da viagem
+    double custoTotal = custoCombustivel + (numPedagios * valorPedagio);
+
+    return custoTotal;
+  }
+}

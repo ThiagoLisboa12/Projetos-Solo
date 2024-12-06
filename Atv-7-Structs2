@@ -1,0 +1,103 @@
+using System;
+
+class Carro
+{
+  public string Modelo { get; set; }
+  public int Ano { get; set; }
+  public string Cor { get; set; }
+  public string Marca { get; set; }
+  public string Placa { get; set; }
+  public double Valor { get; set; }
+
+  public Carro(string modelo, int ano, string cor, string marca, string placa, double valor)
+  {
+    Modelo = modelo;
+    Ano = ano;
+    Cor = cor;
+    Marca = marca;
+    Placa = placa;
+    Valor = valor;
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Carro[] carros = new Carro[10];
+
+    // Cadastro de 10 carros
+    for (int i = 0; i < 10; i++)
+    {
+      Console.WriteLine($"Cadastro do Carro {i + 1}:");
+      Console.Write("Modelo: ");
+      string modelo = Console.ReadLine();
+      Console.Write("Ano: ");
+      int ano = int.Parse(Console.ReadLine());
+      Console.Write("Cor: ");
+      string cor = Console.ReadLine();
+      Console.Write("Marca: ");
+      string marca = Console.ReadLine();
+      Console.Write("Placa: ");
+      string placa = Console.ReadLine();
+      Console.Write("Valor: ");
+      double valor = double.Parse(Console.ReadLine());
+      Console.WriteLine();
+
+      carros[i] = new Carro(modelo, ano, cor, marca, placa, valor);
+    }
+
+    // Contagem de carros de cor azul e da marca Ford
+    int contadorAzul = 0;
+    int contadorFord = 0;
+
+    // Encontrando o carro mais caro e o mais barato
+    Carro carroMaisCaro = carros[0];
+    Carro carroMaisBarato = carros[0];
+
+    // Encontrando o carro mais novo e o mais velho
+    Carro carroMaisNovo = carros[0];
+    Carro carroMaisVelho = carros[0];
+
+    foreach (var carro in carros)
+    {
+      if (carro.Cor.ToLower() == "azul")
+      {
+        contadorAzul++;
+      }
+
+      if (carro.Marca.ToLower() == "ford")
+      {
+        contadorFord++;
+      }
+
+      if (carro.Valor > carroMaisCaro.Valor)
+      {
+        carroMaisCaro = carro;
+      }
+
+      if (carro.Valor < carroMaisBarato.Valor)
+      {
+        carroMaisBarato = carro;
+      }
+
+      if (carro.Ano > carroMaisNovo.Ano)
+      {
+        carroMaisNovo = carro;
+      }
+
+      if (carro.Ano < carroMaisVelho.Ano)
+      {
+        carroMaisVelho = carro;
+      }
+    }
+
+    // Exibindo os resultados
+    Console.WriteLine($"Número de carros de cor azul: {contadorAzul}");
+    Console.WriteLine($"Número de carros da marca Ford: {contadorFord}");
+    Console.WriteLine($"Carro mais caro: {carroMaisCaro.Modelo}, Valor: {carroMaisCaro.Valor}");
+    Console.WriteLine($"Carro mais barato: {carroMaisBarato.Modelo}, Valor: {carroMaisBarato.Valor}");
+    Console.WriteLine($"Carro mais novo: {carroMaisNovo.Modelo}, Ano: {carroMaisNovo.Ano}");
+    Console.WriteLine($"Carro mais velho: {carroMaisVelho.Modelo}, Ano: {carroMaisVelho.Ano}");
+  }
+}

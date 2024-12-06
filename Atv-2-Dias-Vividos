@@ -1,0 +1,17 @@
+#include <math.h>
+#include <locale.h>
+main(conversaotempo)
+{
+    int x=0, ano=0, mes=0, dia=0, aux=0
+    setlocale(LC_ALL, "Portuguese");
+    printf("\n Programa de Conversão de Tempo");
+    printf("\n \n Informe o valor a ser convertido: ");
+    scanf("%d", &x)
+    ano=x/365;
+    aux=x%365;
+    mes=aux/30;
+    dia=aux%30;
+    printf("\n %d dias corresponde a %d anos, %d meses e %d dias.", x,ano,mes,dia);
+    return(0);
+
+}

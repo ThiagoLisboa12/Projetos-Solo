@@ -1,0 +1,45 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Console.WriteLine("Informe a capacidade do caminhão em quilos:");
+    int capacidadeCaminhao = Convert.ToInt32(Console.ReadLine());
+
+    int pesoTotal = 0;
+    int quantidadeMercadorias = 0;
+
+    while (true)
+    {
+      Console.WriteLine("Informe o peso da próxima carga (ou digite 0 para encerrar):");
+      int pesoCarga = Convert.ToInt32(Console.ReadLine());
+
+      if (pesoCarga == 0)
+      {
+        break;
+      }
+
+      if (pesoTotal + pesoCarga > capacidadeCaminhao)
+      {
+        Console.WriteLine("Capacidade do caminhão excedida. Não é possível adicionar essa carga.");
+        continue;
+      }
+
+      pesoTotal += pesoCarga;
+      quantidadeMercadorias++;
+
+      int pesoRestante = capacidadeCaminhao - pesoTotal;
+      Console.WriteLine($"Restam {pesoRestante} quilos de espaço no caminhão.");
+
+    }
+
+    double pesoMedio = (double)pesoTotal / quantidadeMercadorias;
+
+    Console.WriteLine($"Total de mercadorias inseridas: {quantidadeMercadorias}");
+    Console.WriteLine($"Peso médio de cada mercadoria: {pesoMedio} quilos");
+    Console.WriteLine($"Peso total carregado: {pesoTotal} quilos");
+
+    Console.ReadLine();
+  }
+}

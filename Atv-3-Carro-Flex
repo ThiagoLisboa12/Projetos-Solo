@@ -1,0 +1,55 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    // Leitura dos dados
+    Console.Write("Digite o nome da cidade de origem: ");
+    string cidadeOrigem = Console.ReadLine();
+
+    Console.Write("Digite o nome da cidade de destino: ");
+    string cidadeDestino = Console.ReadLine();
+
+    Console.Write("Digite a distância entre as cidades (em km): ");
+    double distancia = double.Parse(Console.ReadLine());
+
+    Console.Write("Digite o valor do litro de etanol: R$");
+    double precoEtanol = double.Parse(Console.ReadLine());
+
+    Console.Write("Digite o valor do litro de gasolina: R$");
+    double precoGasolina = double.Parse(Console.ReadLine());
+
+    Console.Write("Digite a quilometragem por litro do carro com etanol: ");
+    double kmPorLitroEtanol = double.Parse(Console.ReadLine());
+
+    Console.Write("Digite a quilometragem por litro do carro com gasolina: ");
+    double kmPorLitroGasolina = double.Parse(Console.ReadLine());
+
+    // Cálculo dos custos de viagem
+    double custoEtanol = (distancia / kmPorLitroEtanol) * precoEtanol;
+    double custoGasolina = (distancia / kmPorLitroGasolina) * precoGasolina;
+
+    // Verificação de qual combustível é mais vantajoso
+    string combustivelMaisVantajoso;
+    if (custoEtanol < custoGasolina)
+    {
+      combustivelMaisVantajoso = "etanol";
+    }
+    else if (custoEtanol > custoGasolina)
+    {
+      combustivelMaisVantajoso = "gasolina";
+    }
+    else
+    {
+      combustivelMaisVantajoso = "tanto faz";
+    }
+
+    // Saída dos resultados
+    Console.WriteLine($"Custo de viagem com etanol: R${custoEtanol:F2}");
+    Console.WriteLine($"Custo de viagem com gasolina: R${custoGasolina:F2}");
+    Console.WriteLine($"É mais vantajoso viajar com: {combustivelMaisVantajoso}");
+
+    Console.ReadLine(); // Aguarda o usuário pressionar Enter para encerrar
+  }
+}

@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int num1, num2, num3;
+    int produto1_2, diferenca3_1, soma2_3, razao_soma_ultimo, produto_soma_diferenca;
+
+    printf("Digite o primeiro número inteiro: ");
+    scanf("%d", &num1);
+    printf("Digite o segundo número inteiro: ");
+    scanf("%d", &num2);
+    printf("Digite o terceiro número inteiro: ");
+    scanf("%d", &num3);
+
+    produto1_2 = num1 * num2;
+    diferenca3_1 = num3 - num1;
+    soma2_3 = num2 + num3;
+    razao_soma_ultimo = (num1 + num2) / num3;
+    produto_soma_diferenca = (num1 + num2) * (num2 - num3);
+
+    printf("Produto do primeiro pelo segundo: %d\n", produto1_2);
+    printf("Diferença do terceiro pelo primeiro: %d\n", diferenca3_1);
+    printf("Soma entre o segundo e o terceiro: %d\n", soma2_3);
+    printf("Razão da soma dos dois primeiros pelo último: %d\n", razao_soma_ultimo);
+    printf("Produto da soma dos dois primeiros pela diferença do segundo com o terceiro: %d\n", produto_soma_diferenca);
+
+    return 0;
+}

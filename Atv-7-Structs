@@ -1,0 +1,58 @@
+using System;
+
+class Cliente
+{
+  public string Nome { get; set; }
+  public string RG { get; set; }
+  public string CPF { get; set; }
+  public string Endereco { get; set; }
+
+  public Cliente(string nome, string rg, string cpf, string endereco)
+  {
+    Nome = nome;
+    RG = rg;
+    CPF = cpf;
+    Endereco = endereco;
+  }
+
+  public void MostrarDados()
+  {
+    Console.WriteLine($"Nome: {Nome}");
+    Console.WriteLine($"RG: {RG}");
+    Console.WriteLine($"CPF: {CPF}");
+    Console.WriteLine($"Endereço: {Endereco}");
+    Console.WriteLine();
+  }
+}
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Cliente[] clientes = new Cliente[15];
+
+    // Cadastro de 15 clientes
+    for (int i = 0; i < 15; i++)
+    {
+      Console.WriteLine($"Cadastro do Cliente {i + 1}:");
+      Console.Write("Nome: ");
+      string nome = Console.ReadLine();
+      Console.Write("RG: ");
+      string rg = Console.ReadLine();
+      Console.Write("CPF: ");
+      string cpf = Console.ReadLine();
+      Console.Write("Endereço: ");
+      string endereco = Console.ReadLine();
+      Console.WriteLine();
+
+      clientes[i] = new Cliente(nome, rg, cpf, endereco);
+    }
+
+    // Exibindo os dados dos clientes cadastrados
+    Console.WriteLine("Clientes Cadastrados:");
+    foreach (var cliente in clientes)
+    {
+      cliente.MostrarDados();
+    }
+  }
+}

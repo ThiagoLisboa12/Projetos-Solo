@@ -1,0 +1,59 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    Console.Write("Digite um caractere entre A e G: ");
+    char caractere = char.Parse(Console.ReadLine().ToLower());
+
+    string diaSemana = ObterDiaDaSemana(caractere);
+
+    if (diaSemana != null)
+    {
+      Console.WriteLine($"O dia correspondente ao caractere {caractere} é {diaSemana}.");
+    }
+    else
+    {
+      Console.WriteLine("Erro: Caractere inválido. Por favor, digite um caractere entre A e G.");
+    }
+
+    Console.ReadLine(); // Aguarda o usuário pressionar Enter para encerrar
+  }
+
+  static string ObterDiaDaSemana(char caractere)
+  {
+    if (caractere == 'a')
+    {
+      return DayOfWeek.Monday.ToString();
+    }
+    else if (caractere == 'b')
+    {
+      return DayOfWeek.Tuesday.ToString();
+    }
+    else if (caractere == 'c')
+    {
+      return DayOfWeek.Wednesday.ToString();
+    }
+    else if (caractere == 'd')
+    {
+      return DayOfWeek.Thursday.ToString();
+    }
+    else if (caractere == 'e')
+    {
+      return DayOfWeek.Friday.ToString();
+    }
+    else if (caractere == 'f')
+    {
+      return DayOfWeek.Saturday.ToString();
+    }
+    else if (caractere == 'g')
+    {
+      return DayOfWeek.Sunday.ToString();
+    }
+    else
+    {
+      return null;
+    }
+  }
+}

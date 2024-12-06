@@ -1,0 +1,35 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    const int NUM_ITENS = 5;
+
+    double[] precos = new double[NUM_ITENS];
+    for (int i = 0; i < NUM_ITENS; i++)
+    {
+      Console.Write($"Digite o valor do item {i + 1}: ");
+      precos[i] = double.Parse(Console.ReadLine());
+    }
+
+    Console.Write("Digite o valor total que possui: ");
+    double valorTotalDisponivel = double.Parse(Console.ReadLine());
+
+    double valorTotalCompra = 0;
+    foreach (double preco in precos)
+    {
+      valorTotalCompra += preco;
+    }
+
+    double valorMedioProdutos = valorTotalCompra / NUM_ITENS;
+
+    bool suficiente = valorTotalDisponivel >= valorTotalCompra;
+
+    Console.WriteLine($"Valor total da compra: R${valorTotalCompra:F2}");
+    Console.WriteLine($"Valor médio dos produtos: R${valorMedioProdutos:F2}");
+    Console.WriteLine($"Dinheiro suficiente para a compra: {(suficiente ? "Sim" : "Não")}");
+
+    Console.ReadLine();
+  }
+}

@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int num_pessoas, capacidade_carro, capacidade_van, capacidade_onibus;
+    int viagens_carro, viagens_van, viagens_onibus;
+    
+    printf("Digite o número de pessoas a serem transportadas: ");
+    scanf("%d", &num_pessoas);
+    printf("Digite a capacidade do carro: ");
+    scanf("%d", &capacidade_carro);
+    printf("Digite a capacidade da van: ");
+    scanf("%d", &capacidade_van);
+    printf("Digite a capacidade do ônibus: ");
+    scanf("%d", &capacidade_onibus);
+    
+    viagens_carro = (num_pessoas + capacidade_carro - 1) / capacidade_carro;
+    viagens_van = (num_pessoas + capacidade_van - 1) / capacidade_van;
+    viagens_onibus = (num_pessoas + capacidade_onibus - 1) / capacidade_onibus;
+    
+    printf("Seriam necessárias %d viagens de carro.\n", viagens_carro);
+    printf("Seriam necessárias %d viagens de van.\n", viagens_van);
+    printf("Seriam necessárias %d viagens de ônibus.\n", viagens_onibus);
+    
+    int pessoas_restantes = num_pessoas;
+    int pessoas_carro, pessoas_van, pessoas_onibus;
+    
+    pessoas_carro = capacidade_carro;
+    pessoas_restantes -= capacidade_carro;
+    
+    pessoas_van = (pessoas_restantes > capacidade_van) ? capacidade_van : pessoas_restantes;
+    pessoas_restantes -= pessoas_van;
+    
+    pessoas_onibus = (pessoas_restantes > capacidade_onibus) ? capacidade_onibus : pessoas_restantes;
+    pessoas_restantes -= pessoas_onibus;
+    
+    printf("No primeiro carro irão %d pessoas.\n", pessoas_carro);
+    printf("Na primeira van irão %d pessoas.\n", pessoas_van);
+    printf("No primeiro ônibus irão %d pessoas.\n", pessoas_onibus);
+    
+    return 0;
+}

@@ -1,0 +1,35 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    double[,] notas = new double[10, 4];
+
+    // Solicitando e validando as notas
+    for (int i = 0; i < 10; i++)
+    {
+      Console.WriteLine($"Aluno {i + 1}:");
+      for (int j = 0; j < 4; j++)
+      {
+        do
+        {
+          Console.Write($"Nota {j + 1}: ");
+          notas[i, j] = double.Parse(Console.ReadLine());
+        } while (notas[i, j] < 0 || notas[i, j] > 10); // Validando notas entre 0 e 10
+      }
+      Console.WriteLine();
+    }
+
+    // Exibindo as notas
+    Console.WriteLine("Notas dos alunos:");
+    for (int i = 0; i < 10; i++)
+    {
+      for (int j = 0; j < 4; j++)
+      {
+        Console.Write(notas[i, j] + " ");
+      }
+      Console.WriteLine();
+    }
+  }
+}

@@ -1,0 +1,9 @@
+function somarDoisNumeros(a, b) {
+    return a + b;
+}
+
+let numero1 = 5;
+let numero2 = 3;
+let resultado = somarDoisNumeros(numero1, numero2);
+
+console.log("A soma de " + numero1 + " e " + numero2 + " é: " + resultado);

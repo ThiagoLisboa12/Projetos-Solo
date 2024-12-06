@@ -1,0 +1,46 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite um caractere entre A e G maiúsculo: ");
+        char caractere = char.Parse(Console.ReadLine());
+
+        string diaSemana = ObterDiaDaSemana(caractere);
+
+        if (diaSemana != null)
+        {
+            Console.WriteLine($"O dia correspondente ao caractere {caractere} é {diaSemana}.");
+        }
+        else
+        {
+            Console.WriteLine("Erro: Caractere inválido. Por favor, digite um caractere entre A e G maiúsculo.");
+        }
+
+        Console.ReadLine(); // Aguarda o usuário pressionar Enter para encerrar
+    }
+
+    static string ObterDiaDaSemana(char caractere)
+    {
+        switch (caractere)
+        {
+            case 'A':
+                return DayOfWeek.Monday.ToString();
+            case 'B':
+                return DayOfWeek.Tuesday.ToString();
+            case 'C':
+                return DayOfWeek.Wednesday.ToString();
+            case 'D':
+                return DayOfWeek.Thursday.ToString();
+            case 'E':
+                return DayOfWeek.Friday.ToString();
+            case 'F':
+                return DayOfWeek.Saturday.ToString();
+            case 'G':
+                return DayOfWeek.Sunday.ToString();
+            default:
+                return null;
+        }
+    }
+}

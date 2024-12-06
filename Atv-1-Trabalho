@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    int horas_por_dia = 8;
+    int dias_total = 3670;
+    int horas_total, dias_equivalentes, meses_equivalentes, anos_equivalentes;
+    int semanas_total, horas_por_semana = 7 * horas_por_dia;
+
+    horas_total = horas_por_dia * dias_total;
+
+    dias_equivalentes = horas_total / horas_por_dia;
+    meses_equivalentes = dias_equivalentes / 30;
+    anos_equivalentes = dias_equivalentes / 365;
+
+    semanas_total = horas_total / horas_por_semana;
+
+    printf("Total de horas trabalhadas: %d horas\n", horas_total);
+    printf("Equivalência em dias: %d dias\n", dias_equivalentes);
+    printf("Equivalência em meses: %d meses\n", meses_equivalentes);
+    printf("Equivalência em anos: %d anos\n", anos_equivalentes);
+    printf("Total de semanas necessárias: %d semanas\n", semanas_total);
+
+    return 0;
+}

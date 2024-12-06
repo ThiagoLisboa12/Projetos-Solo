@@ -1,0 +1,48 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    int numeroDia;
+
+    do
+    {
+      Console.WriteLine("Digite um número entre 1 e 7:");
+    } while (!int.TryParse(Console.ReadLine(), out numeroDia) || numeroDia < 1 || numeroDia > 7);
+
+    string diaSemana;
+
+    switch (numeroDia)
+    {
+      case 1:
+        diaSemana = "Domingo";
+        break;
+      case 2:
+        diaSemana = "Segunda-feira";
+        break;
+      case 3:
+        diaSemana = "Terça-feira";
+        break;
+      case 4:
+        diaSemana = "Quarta-feira";
+        break;
+      case 5:
+        diaSemana = "Quinta-feira";
+        break;
+      case 6:
+        diaSemana = "Sexta-feira";
+        break;
+      case 7:
+        diaSemana = "Sábado";
+        break;
+      default:
+        diaSemana = "Inválido";
+        break;
+    }
+
+    Console.WriteLine($"O número {numeroDia} corresponde a {diaSemana}.");
+
+    Console.ReadLine();
+  }
+}

@@ -1,0 +1,100 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    const int numeroAlunos = 10;
+    const int numeroNotas = 4;
+
+    string[] nomes = new string[numeroAlunos];
+    double[,] notas = new double[numeroAlunos, numeroNotas];
+
+    // Ler as notas de cada aluno
+    for (int i = 0; i < numeroAlunos; i++)
+    {
+      Console.WriteLine($"Digite o nome do aluno {i + 1}:");
+      nomes[i] = Console.ReadLine();
+
+      for (int j = 0; j < numeroNotas; j++)
+      {
+        Console.WriteLine($"Digite a {j + 1}ª nota do aluno {nomes[i]}:");
+        notas[i, j] = LerNota();
+      }
+    }
+
+    // Contadores para acompanhar a quantidade de alunos em diferentes situações
+    int alunosAprovados = 0;
+    int alunosReprovados = 0;
+    int alunosRecuperacao = 0;
+
+    // Variáveis para acompanhar a maior e menor nota, e seus respectivos alunos
+    double maiorNota = double.MinValue;
+    double menorNota = double.MaxValue;
+    string alunoMaiorNota = "";
+    string alunoMenorNota = "";
+
+    // Calcular notas médias e verificar aprovação/reprovação/recuperação
+    for (int i = 0; i < numeroAlunos; i++)
+    {
+      double somaNotas = 0;
+
+      for (int j = 0; j < numeroNotas; j++)
+      {
+        somaNotas += notas[i, j];
+      }
+
+      double media = somaNotas / numeroNotas;
+
+      // Verificar se o aluno está em recuperação
+      if (media >= 4 && media < 6)
+      {
+        alunosRecuperacao++;
+      }
+      // Verificar se o aluno foi aprovado
+      else if (media >= 6)
+      {
+        alunosAprovados++;
+      }
+      // Verificar se o aluno foi reprovado
+      else
+      {
+        alunosReprovados++;
+      }
+
+      // Verificar se é a maior nota
+      if (media > maiorNota)
+      {
+        maiorNota = media;
+        alunoMaiorNota = nomes[i];
+      }
+
+      // Verificar se é a menor nota
+      if (media < menorNota)
+      {
+        menorNota = media;
+        alunoMenorNota = nomes[i];
+      }
+    }
+
+    // Exibir resultados
+    Console.WriteLine($"Alunos aprovados: {alunosAprovados}");
+    Console.WriteLine($"Alunos em recuperação: {alunosRecuperacao}");
+    Console.WriteLine($"Alunos reprovados: {alunosReprovados}");
+    Console.WriteLine($"Aluno com maior nota: {alunoMaiorNota}, Nota: {maiorNota}");
+    Console.WriteLine($"Aluno com menor nota: {alunoMenorNota}, Nota: {menorNota}");
+
+    Console.ReadLine();
+  }
+
+  // Método para ler uma nota, garantindo que está entre 0 e 10
+  static double LerNota()
+  {
+    double nota;
+    while (!double.TryParse(Console.ReadLine(), out nota) || nota < 0 || nota > 10)
+    {
+      Console.WriteLine("Nota inválida. Por favor, digite uma nota entre 0 e 10:");
+    }
+    return nota;
+  }
+}

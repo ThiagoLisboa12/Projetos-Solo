@@ -1,0 +1,68 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    double[,] notas = new double[10, 4];
+    int recup = 0, reprov = 0, aprov = 0, notas10 = 0, abaixo6 = 0;
+
+    // Solicitando e validando as notas
+    for (int i = 0; i < 10; i++)
+    {
+      Console.WriteLine($"Aluno {i + 1}:");
+      for (int j = 0; j < 4; j++)
+      {
+        do
+        {
+          Console.Write($"Nota {j + 1}: ");
+          notas[i, j] = double.Parse(Console.ReadLine());
+        } while (notas[i, j] < 0 || notas[i, j] > 10); // Validando notas entre 0 e 10
+
+        if (notas[i, j] < 6)
+        {
+          abaixo6++;
+        }
+        if (notas[i, j] == 10)
+        {
+          notas10++;
+        }
+      }
+
+      double media = (notas[i, 0] + notas[i, 1] + notas[i, 2] + notas[i, 3]) / 4;
+      if (media < 6)
+      {
+        recup++;
+      }
+      else if (media >= 6 && media < 7)
+      {
+        recup++;
+      }
+      else if (media >= 7)
+      {
+        aprov++;
+      }
+    }
+
+    reprov = 10 - (recup + aprov);
+
+    // Calculando percentuais
+    double percentualNotas10 = (double)notas10 / 40 * 100;
+    double percentualAbaixo6 = (double)abaixo6 / 40 * 100;
+    double percentualRecup = (double)recup / 10 * 100;
+    double percentualReprov = (double)reprov / 10 * 100;
+    double percentualAprov = (double)aprov / 10 * 100;
+
+    // Exibindo os resultados
+    Console.WriteLine($"Número de alunos de recuperação: {recup}");
+    Console.WriteLine($"Número de alunos reprovados: {reprov}");
+    Console.WriteLine($"Número de alunos aprovados: {aprov}");
+    Console.WriteLine($"Número de notas 10: {notas10}");
+    Console.WriteLine($"Número de notas abaixo de 6: {abaixo6}");
+    Console.WriteLine($"Percentual de notas 10: {percentualNotas10}%");
+    Console.WriteLine($"Percentual de notas abaixo de 6: {percentualAbaixo6}%");
+    Console.WriteLine($"Percentual de alunos de recuperação: {percentualRecup}%");
+    Console.WriteLine($"Percentual de alunos reprovados: {percentualReprov}%");
+    Console.WriteLine($"Percentual de alunos aprovados: {percentualAprov}%");
+  }
+}

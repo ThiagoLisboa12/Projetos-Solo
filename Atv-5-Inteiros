@@ -1,0 +1,34 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    int dia, mes, ano;
+
+    Console.WriteLine("Digite o dia (entre 1 e 31):");
+    while (!int.TryParse(Console.ReadLine(), out dia) || dia < 1 || dia > 31)
+    {
+      Console.WriteLine("Dia inválido. Digite novamente:");
+    }
+
+    Console.WriteLine("Digite o mês (entre 1 e 12):");
+    while (!int.TryParse(Console.ReadLine(), out mes) || mes < 1 || mes > 12)
+    {
+      Console.WriteLine("Mês inválido. Digite novamente:");
+    }
+
+    Console.WriteLine("Digite o ano (superior a 2000):");
+    while (!int.TryParse(Console.ReadLine(), out ano) || ano <= 2000)
+    {
+      Console.WriteLine("Ano inválido. Digite novamente:");
+    }
+
+    string[] nomesMeses = {"janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
+                                "agosto", "setembro", "outubro", "novembro", "dezembro"};
+
+    Console.WriteLine($"A data é: {dia} de {nomesMeses[mes - 1]} de {ano}.");
+
+    Console.ReadLine();
+  }
+}

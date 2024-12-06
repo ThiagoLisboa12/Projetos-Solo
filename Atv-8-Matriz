@@ -1,0 +1,40 @@
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    int[,] matriz = new int[10, 10];
+
+    // Preenchendo a matriz
+    for (int i = 0; i < 10; i++)
+    {
+      for (int j = 0; j < 10; j++)
+      {
+        if (i == j)
+        {
+          matriz[i, j] = 0; // Diagonal principal
+        }
+        else if (i < j)
+        {
+          matriz[i, j] = 2; // Acima da diagonal
+        }
+        else
+        {
+          matriz[i, j] = 1; // Abaixo da diagonal
+        }
+      }
+    }
+
+    // Exibindo a matriz
+    Console.WriteLine("Matriz resultante:");
+    for (int i = 0; i < 10; i++)
+    {
+      for (int j = 0; j < 10; j++)
+      {
+        Console.Write(matriz[i, j] + " ");
+      }
+      Console.WriteLine();
+    }
+  }
+}
